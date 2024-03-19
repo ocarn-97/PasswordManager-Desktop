@@ -30,8 +30,37 @@ Logging: The application will implement logging mechanisms to record user activi
 
 ### Class Structure
 - Master Account
+  - ID
+  - Username
+  - Password
+  - Email
 - User Account
-- Password Utils (Checker and Generator)
-- Database Utils
-
+  - List<Accounts>
+  - ID
+  - Title
+  - Website
+  - Username
+  - Password
+  - Add()
+  - Delete()
+  - Update()
+  - Fetch()
+- Cryptography Manager
+  - Encrypt()
+  - Decrypt()
+  - Hash()
+  - Salt()
+- Password Utils
+  - Check()
+  - Generate()
+- Database Manager
+  - GetConnection()
+  - CloseConnection()
+  - Execute()
+- Log Manager
+  - WriteToFile()
+  - LogMessage()
+- Password Reset Manager
+  - SendEmail()
+  - Reset()
 
