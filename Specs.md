@@ -30,21 +30,21 @@ Logging: The application will implement logging mechanisms to record user activi
 
 ### Class Structure
   LoginManager:
-      Attributes: ID, Username, Password, Email
-      Methods:
+      - Attributes: ID, Username, Password, Email
+      - Methods:
           VerifyAccount(): Verifies user account credentials.
           ResetPassword(): Resets user password.
 
   AccountManager:
-      Attributes: List of accounts
-      Methods:
+      - Attributes: List of accounts
+      - Methods:
           AddAccount(): Adds a new account to the manager.
           DeleteAccount(): Deletes an existing account.
           UpdateAccount(): Updates account information.
           FetchAccount(): Retrieves account details.
 
   SecurityManager:
-      Methods:
+      - Methods:
           Encrypt(): Encrypts data.
           Decrypt(): Decrypts data.
           HashPassword(): Hashes passwords.
@@ -52,13 +52,13 @@ Logging: The application will implement logging mechanisms to record user activi
           CheckPasswordStrength(): Checks the strength of passwords.
 
   DataManager:
-      Methods:
+      - Methods:
           GetConnection(): Establishes a connection to the database.
           CloseConnection(): Closes the database connection.
           ExecuteQuery(): Executes SQL queries.
 
   LogManager:
-      Methods:
+      - Methods:
           WriteToFile(): Writes log messages to a file.
           CreateLog(): Creates a new log entry.
 
