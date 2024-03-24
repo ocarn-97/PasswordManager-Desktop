@@ -6,6 +6,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PasswordManager_Desktop
 {
@@ -19,6 +20,27 @@ namespace PasswordManager_Desktop
         // VerifyAccount() : Verifies user account credentials.
         // ResetPassword(): Resets user password.
 
+        public static void CreateMasterAccount(LoginManager loginManager)
+        {
+            string query = "INSERT INTO MasterAccount (Username, Password, Email) VALUES (@Username, @Password, @Email)";
 
+            IDataManager.ExecuteQuery(query, new
+            {
+                loginManager.Username,
+                loginManager.Password,
+                loginManager.Email
+            });
+        }
+
+        public static void VerifyAccount(LoginManager loginManager)
+        {
+            string query = "SELECT * FROM MasterAccount WHERE Username = @Username AND Password = @Password";
+
+            IDataManager.ExecuteQuery(query, new
+            {
+                loginManager.Username,
+                loginManager.Password
+            });
+        }
     }
 }

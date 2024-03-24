@@ -18,8 +18,6 @@ namespace PasswordManager_Desktop
             public string? Password { get; set; }
         }
 
-        public List<Account> accounts = [];
-
         // AddAccount(): Adds a new account to the manager
         // DeleteAccount(): Deletes an existing account.
         // UpdateAccount(): Updates account information.

@@ -30,13 +30,20 @@ namespace PasswordManager_Desktop
         }
 
         // ExecuteQuery() : Executes SQL queries.
-        public static void ExecuteQuery(string query)
+        public static void ExecuteQuery(string query, object? parameters)
         {
             using SQLiteConnection connection = GetConnection();
             using SQLiteCommand command = new(query, connection);
             try
             {
                 connection.Open();
+                if (parameters != null)
+                {
+                    foreach (var prop in parameters.GetType().GetProperties())
+                    {
+                        command.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(parameters, null));
+                    }
+                }
                 command.ExecuteNonQuery();
             }
             catch (SQLiteException ex)
