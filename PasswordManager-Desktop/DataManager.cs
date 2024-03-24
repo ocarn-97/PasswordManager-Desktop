@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace PasswordManager_Desktop
 {
-    internal class DataManager
+    internal interface IDataManager
     {
 
-        private const string connectionString = "Data Source=PasswordManager-Desktop.db;Version=3;";
+        private const string ConnectionString = "Data Source=PasswordManager-Desktop.db;Version=3;";
 
         // GetConnection(): Establishes a connection to the database.
-        public static SQLiteConnection GetConnection()
+        private static SQLiteConnection GetConnection()
         {
-            SQLiteConnection connection = new(connectionString);
+            SQLiteConnection connection = new(ConnectionString);
             return connection;
         }
 
         //CloseConnection(): Closes the database connection.
-        public static void CloseConnection(SQLiteConnection connection)
+        private static void CloseConnection(SQLiteConnection connection)
         {
             if (connection != null && connection.State != System.Data.ConnectionState.Closed)
             {
@@ -41,7 +41,7 @@ namespace PasswordManager_Desktop
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show("SQLite Error executing query: " + ex.Message);
+                MessageBox.Show("SQLite Error: " + ex.Message);
             }
             finally
             {
