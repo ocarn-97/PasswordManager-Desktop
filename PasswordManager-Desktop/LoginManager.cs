@@ -24,7 +24,7 @@ namespace PasswordManager_Desktop
         {
             string query = "INSERT INTO MasterAccount (Username, Password, Email) VALUES (@Username, @Password, @Email)";
 
-            IDataManager.ExecuteQuery(query, new
+            IDataManager.Insert(query, new
             {
                 loginManager.Username,
                 loginManager.Password,
@@ -32,15 +32,15 @@ namespace PasswordManager_Desktop
             });
         }
 
-        public static void VerifyAccount(LoginManager loginManager)
-        {
-            string query = "SELECT * FROM MasterAccount WHERE Username = @Username AND Password = @Password";
+        //public static void VerifyAccount(LoginManager loginManager)
+        //{
+        //    string query = "SELECT * FROM MasterAccount WHERE Username = @Username AND Password = @Password";
 
-            IDataManager.ExecuteQuery(query, new
-            {
-                loginManager.Username,
-                loginManager.Password
-            });
-        }
+        //    IDataManager.Select(query, new
+        //    {
+        //        loginManager.Username,
+        //        loginManager.Password
+        //    });
+        //}
     }
 }

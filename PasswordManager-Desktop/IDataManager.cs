@@ -29,8 +29,89 @@ namespace PasswordManager_Desktop
             }
         }
 
-        // ExecuteQuery() : Executes SQL queries.
-        public static void ExecuteQuery(string query, object? parameters)
+        // Insert() : Executes insert query
+        public static void Insert(string query, object? parameters)
+        {
+            using SQLiteConnection connection = GetConnection();
+            using SQLiteCommand command = new(query, connection);
+            try
+            {
+                connection.Open();
+                if (parameters != null)
+                {
+                    foreach (var prop in parameters.GetType().GetProperties())
+                    {
+                        command.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(parameters, null));
+                    }
+                }
+                command.ExecuteNonQuery();
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("SQLite Error: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection(connection);
+            }
+        }
+
+        // Select() : Executes select query.
+        public static void Select(string query, object? parameters)
+        {
+            using SQLiteConnection connection = GetConnection();
+            using SQLiteCommand command = new(query, connection);
+            try
+            {
+                connection.Open();
+                if (parameters != null)
+                {
+                    foreach (var prop in parameters.GetType().GetProperties())
+                    {
+                        command.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(parameters, null));
+                    }
+                }
+                command.ExecuteNonQuery();
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("SQLite Error: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection(connection);
+            }
+        }
+
+        // Update() : Executes update query.
+        public static void Update(string query, object? parameters)
+        {
+            using SQLiteConnection connection = GetConnection();
+            using SQLiteCommand command = new(query, connection);
+            try
+            {
+                connection.Open();
+                if (parameters != null)
+                {
+                    foreach (var prop in parameters.GetType().GetProperties())
+                    {
+                        command.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(parameters, null));
+                    }
+                }
+                command.ExecuteNonQuery();
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("SQLite Error: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection(connection);
+            }
+        }
+
+        // Delete() : Executes delete query.
+        public static void Delete(string query, object? parameters)
         {
             using SQLiteConnection connection = GetConnection();
             using SQLiteCommand command = new(query, connection);
