@@ -57,8 +57,9 @@ namespace PasswordManager_Desktop
         }
 
         // Select() : Executes select query.
-        public static void Select(string query, object? parameters)
+        public static List<Dictionary<string, object>> Select(string query, object? parameters)
         {
+            List<Dictionary<string, object>> results = [];
             using SQLiteConnection connection = GetConnection();
             using SQLiteCommand command = new(query, connection);
             try
@@ -71,7 +72,16 @@ namespace PasswordManager_Desktop
                         command.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(parameters, null));
                     }
                 }
-                command.ExecuteNonQuery();
+                using SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Dictionary<string, object> row = [];
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        row.Add(reader.GetName(i), reader.GetValue(i));
+                    }
+                    results.Add(row);
+                }
             }
             catch (SQLiteException ex)
             {
@@ -81,6 +91,7 @@ namespace PasswordManager_Desktop
             {
                 CloseConnection(connection);
             }
+            return results;
         }
 
         // Update() : Executes update query.

@@ -17,9 +17,9 @@ namespace PasswordManager_Desktop
         public required string Password { get; set; }
         public required string Email { get; set; }
 
-        // VerifyAccount() : Verifies user account credentials.
         // ResetPassword(): Resets user password.
 
+        // CreateMasterAccount() : Creates master account by inserting into MasterAccount table.
         public static void CreateMasterAccount(LoginManager loginManager)
         {
             string query = "INSERT INTO MasterAccount (Username, Password, Email) VALUES (@Username, @Password, @Email)";
@@ -32,15 +32,19 @@ namespace PasswordManager_Desktop
             });
         }
 
-        //public static void VerifyAccount(LoginManager loginManager)
-        //{
-        //    string query = "SELECT * FROM MasterAccount WHERE Username = @Username AND Password = @Password";
+        // CheckExistenceOfAccount() : Checks whether a master account exists by querying the MasterAccount table.
+        public static bool CheckExistenceOfAccount(LoginManager loginManager)
+        {
+            string query = "SELECT * FROM MasterAccount WHERE Username = @Username AND Password = @Password";
 
-        //    IDataManager.Select(query, new
-        //    {
-        //        loginManager.Username,
-        //        loginManager.Password
-        //    });
-        //}
+            List<Dictionary<string, object>> results = IDataManager
+            .Select(query, new
+            {
+                loginManager.Username,
+                loginManager.Password
+            });
+            if (results.Count > 0 || results != null) {return true;}
+            else { return false; }
+        }
     }
 }
