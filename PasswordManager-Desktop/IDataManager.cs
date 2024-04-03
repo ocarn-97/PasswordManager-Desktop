@@ -20,7 +20,7 @@ namespace PasswordManager_Desktop
             return connection;
         }
 
-        //CloseConnection(): Closes the database connection.
+        //CloseConnection(): Closes the database connection as a redundancy.
         private static void CloseConnection(SQLiteConnection connection)
         {
             if (connection != null && connection.State != System.Data.ConnectionState.Closed)
@@ -29,8 +29,8 @@ namespace PasswordManager_Desktop
             }
         }
 
-        // Insert() : Executes insert query
-        public static void Insert(string query, object? parameters)
+        // Save() : Executes create, update, and delete queries.
+        public static void Save(string query, object? parameters)
         {
             using SQLiteConnection connection = GetConnection();
             using SQLiteCommand command = new(query, connection);
@@ -56,8 +56,8 @@ namespace PasswordManager_Desktop
             }
         }
 
-        // Select() : Executes select query.
-        public static List<Dictionary<string, object>> Select(string query, object? parameters)
+        // Fetch() : Executes select queries.
+        public static List<Dictionary<string, object>> Fetch(string query, object? parameters)
         {
             List<Dictionary<string, object>> results = [];
             using SQLiteConnection connection = GetConnection();
@@ -92,60 +92,6 @@ namespace PasswordManager_Desktop
                 CloseConnection(connection);
             }
             return results;
-        }
-
-        // Update() : Executes update query.
-        public static void Update(string query, object? parameters)
-        {
-            using SQLiteConnection connection = GetConnection();
-            using SQLiteCommand command = new(query, connection);
-            try
-            {
-                connection.Open();
-                if (parameters != null)
-                {
-                    foreach (var prop in parameters.GetType().GetProperties())
-                    {
-                        command.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(parameters, null));
-                    }
-                }
-                command.ExecuteNonQuery();
-            }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show("SQLite Error: " + ex.Message);
-            }
-            finally
-            {
-                CloseConnection(connection);
-            }
-        }
-
-        // Delete() : Executes delete query.
-        public static void Delete(string query, object? parameters)
-        {
-            using SQLiteConnection connection = GetConnection();
-            using SQLiteCommand command = new(query, connection);
-            try
-            {
-                connection.Open();
-                if (parameters != null)
-                {
-                    foreach (var prop in parameters.GetType().GetProperties())
-                    {
-                        command.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(parameters, null));
-                    }
-                }
-                command.ExecuteNonQuery();
-            }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show("SQLite Error: " + ex.Message);
-            }
-            finally
-            {
-                CloseConnection(connection);
-            }
         }
     }
 }

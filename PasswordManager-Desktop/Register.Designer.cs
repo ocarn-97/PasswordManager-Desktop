@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            usernameTextBox = new TextBox();
+            emailTextBox = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBox3 = new TextBox();
+            passwordTextBox = new TextBox();
             label4 = new Label();
             RegisterAccount = new Button();
             label5 = new Label();
             SuspendLayout();
             // 
-            // textBox1
+            // usernameTextBox
             // 
-            textBox1.Anchor = AnchorStyles.None;
-            textBox1.Location = new Point(190, 131);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(157, 23);
-            textBox1.TabIndex = 0;
+            usernameTextBox.Anchor = AnchorStyles.None;
+            usernameTextBox.Location = new Point(190, 131);
+            usernameTextBox.Name = "usernameTextBox";
+            usernameTextBox.Size = new Size(157, 23);
+            usernameTextBox.TabIndex = 0;
             // 
-            // textBox2
+            // emailTextBox
             // 
-            textBox2.Anchor = AnchorStyles.None;
-            textBox2.Location = new Point(190, 86);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(157, 23);
-            textBox2.TabIndex = 1;
+            emailTextBox.Anchor = AnchorStyles.None;
+            emailTextBox.Location = new Point(190, 86);
+            emailTextBox.Name = "emailTextBox";
+            emailTextBox.Size = new Size(157, 23);
+            emailTextBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -88,14 +88,14 @@
             label3.Text = "Password";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // textBox3
+            // passwordTextBox
             // 
-            textBox3.Anchor = AnchorStyles.None;
-            textBox3.Location = new Point(190, 174);
-            textBox3.Name = "textBox3";
-            textBox3.PasswordChar = '●';
-            textBox3.Size = new Size(157, 23);
-            textBox3.TabIndex = 5;
+            passwordTextBox.Anchor = AnchorStyles.None;
+            passwordTextBox.Location = new Point(190, 174);
+            passwordTextBox.Name = "passwordTextBox";
+            passwordTextBox.PasswordChar = '●';
+            passwordTextBox.Size = new Size(157, 23);
+            passwordTextBox.TabIndex = 5;
             // 
             // label4
             // 
@@ -136,12 +136,12 @@
             Controls.Add(label5);
             Controls.Add(RegisterAccount);
             Controls.Add(label4);
-            Controls.Add(textBox3);
+            Controls.Add(passwordTextBox);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(emailTextBox);
+            Controls.Add(usernameTextBox);
             Name = "Register";
             Text = "  ";
             Load += Login_Load;
@@ -151,12 +151,12 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox usernameTextBox;
+        private TextBox emailTextBox;
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox3;
+        private TextBox passwordTextBox;
         private Label label4;
         private Button RegisterAccount;
         private Label label5;
