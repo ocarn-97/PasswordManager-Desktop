@@ -11,7 +11,7 @@ namespace PasswordManager_Desktop
     internal interface IDataManager
     {
 
-        private const string ConnectionString = "Data Source=PasswordManager-Desktop.db;Version=3;";
+        private const string ConnectionString = "Data Source=C:\\C#\\PasswordManager-Desktop\\PasswordManager-Desktop\\bin\\Files\\PasswordManager-Desktop.db;Version=3;";
 
         // GetConnection(): Establishes a connection to the database.
         private static SQLiteConnection GetConnection()
@@ -29,7 +29,7 @@ namespace PasswordManager_Desktop
             }
         }
 
-        // Save() : Executes create, update, and delete queries.
+        // Save(): Executes create, update, and delete queries.
         public static void Save(string query, object? parameters)
         {
             using SQLiteConnection connection = GetConnection();
@@ -56,7 +56,7 @@ namespace PasswordManager_Desktop
             }
         }
 
-        // Fetch() : Executes select queries.
+        // Fetch(): Executes select queries.
         public static List<Dictionary<string, object>> Fetch(string query, object? parameters)
         {
             List<Dictionary<string, object>> results = [];
