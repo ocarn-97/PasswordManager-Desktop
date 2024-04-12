@@ -10,7 +10,7 @@
 
         // ResetPassword(): Resets user password.
 
-        // CreateMasterAccount() : Creates master account by inserting record into MasterAccount table.
+        // CreateMasterAccount(): Creates master account by inserting a record into the MasterAccount table.
         public static void CreateMasterAccount(LoginManager loginManager)
         {
             string query = "INSERT INTO MasterAccount (Username, Password, Email) VALUES (@Username, @Password, @Email)";
@@ -21,11 +21,10 @@
                 loginManager.Password,
                 loginManager.Email
             });
-
         }
 
-        // IsMasterAccount() : Checks whether a master account exists by querying the MasterAccount table.
-        public static bool IsMasterAccount(LoginManager loginManager)
+        // VerifyCredentials(): Checks whether the inputted credentials correspond to those of the master account in the MasterAccount table.
+        public static bool VerifyCredentials(LoginManager loginManager)
         {
             string query = "SELECT * FROM MasterAccount WHERE Username = @Username AND Password = @Password";
 
@@ -36,6 +35,16 @@
                 loginManager.Password
             });
             if (results.Count > 0 || results != null) {return true;}
+            else { return false; }
+        }
+
+        // IsMasterAccount(): Checks whether a master account exists in the MasterAccount table.
+        public static bool IsMasterAccount()
+        {
+            string query = "SELECT * FROM MasterAccount";
+
+            List<Dictionary<string, object>> results = IDataManager.Fetch(query, null);
+            if (results.Count > 0 || results != null) { return true; }
             else { return false; }
         }
     }

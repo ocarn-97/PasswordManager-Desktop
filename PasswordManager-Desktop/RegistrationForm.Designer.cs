@@ -1,6 +1,6 @@
 ﻿namespace PasswordManager_Desktop
 {
-    partial class Register
+    partial class RegistrationForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -117,7 +117,7 @@
             RegisterAccount.TabIndex = 7;
             RegisterAccount.Text = "Register";
             RegisterAccount.UseVisualStyleBackColor = true;
-            RegisterAccount.Click += RegisterAccount_Click;
+            RegisterAccount.Click += Register_Click;
             // 
             // label5
             // 
@@ -128,7 +128,7 @@
             label5.TabIndex = 8;
             label5.Text = "Create your master account.";
             // 
-            // Register
+            // RegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -142,9 +142,8 @@
             Controls.Add(label1);
             Controls.Add(emailTextBox);
             Controls.Add(usernameTextBox);
-            Name = "Register";
-            Text = "  ";
-            Load += Login_Load;
+            Name = "RegistrationForm";
+            Text = "  Registration Form";
             ResumeLayout(false);
             PerformLayout();
         }
