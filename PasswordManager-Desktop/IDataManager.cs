@@ -11,7 +11,7 @@ namespace PasswordManager_Desktop
     internal interface IDataManager
     {
 
-        private const string ConnectionString = "Data Source=C:\\C#\\PasswordManager-Desktop\\PasswordManager-Desktop\\bin\\Files\\PasswordManager-Desktop.db;Version=3;";
+        private const string ConnectionString = "Data Source=Files\\PasswordManager-Desktop.db;Version=3;";
 
         // GetConnection(): Establishes a connection to the database.
         private static SQLiteConnection GetConnection()

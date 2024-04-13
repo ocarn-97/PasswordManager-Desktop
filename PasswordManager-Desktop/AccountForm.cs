@@ -16,5 +16,26 @@ namespace PasswordManager_Desktop
         {
             InitializeComponent();
         }
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Generate_Click(object sender, EventArgs e)
+        {
+            string generatedPassword = PasswordUtils.GeneratePassword();
+            MessageBox.Show(generatedPassword);
+        }
+
+        private void Check_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

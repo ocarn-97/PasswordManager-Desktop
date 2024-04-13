@@ -29,33 +29,119 @@
         private void InitializeComponent()
         {
             listView1 = new ListView();
+            ID = new ColumnHeader();
+            Title = new ColumnHeader();
+            Website = new ColumnHeader();
+            Email = new ColumnHeader();
+            Username = new ColumnHeader();
+            Password = new ColumnHeader();
+            Add = new Button();
+            Delete = new Button();
+            Generate = new Button();
+            Check = new Button();
             label1 = new Label();
             SuspendLayout();
             // 
             // listView1
             // 
-            listView1.Location = new Point(540, 33);
+            listView1.Columns.AddRange(new ColumnHeader[] { ID, Title, Website, Email, Username, Password });
+            listView1.Location = new Point(12, 67);
             listView1.Name = "listView1";
-            listView1.Size = new Size(248, 405);
+            listView1.Size = new Size(660, 382);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            // 
+            // ID
+            // 
+            ID.Text = "ID";
+            ID.Width = 70;
+            // 
+            // Title
+            // 
+            Title.Text = "Title";
+            Title.Width = 70;
+            // 
+            // Website
+            // 
+            Website.Text = "Website";
+            Website.Width = 70;
+            // 
+            // Email
+            // 
+            Email.Text = "Email";
+            Email.Width = 70;
+            // 
+            // Username
+            // 
+            Username.Text = "Username";
+            Username.Width = 70;
+            // 
+            // Password
+            // 
+            Password.Text = "Password";
+            Password.Width = 70;
+            // 
+            // Add
+            // 
+            Add.Location = new Point(276, 26);
+            Add.Name = "Add";
+            Add.Size = new Size(75, 23);
+            Add.TabIndex = 2;
+            Add.Text = "Add";
+            Add.UseVisualStyleBackColor = true;
+            Add.Click += Add_Click;
+            // 
+            // Delete
+            // 
+            Delete.Location = new Point(373, 26);
+            Delete.Name = "Delete";
+            Delete.Size = new Size(75, 23);
+            Delete.TabIndex = 3;
+            Delete.Text = "Delete";
+            Delete.UseVisualStyleBackColor = true;
+            Delete.Click += Delete_Click;
+            // 
+            // Generate
+            // 
+            Generate.Location = new Point(470, 26);
+            Generate.Name = "Generate";
+            Generate.Size = new Size(75, 23);
+            Generate.TabIndex = 4;
+            Generate.Text = "Generate";
+            Generate.UseVisualStyleBackColor = true;
+            Generate.Click += Generate_Click;
+            // 
+            // Check
+            // 
+            Check.Location = new Point(570, 26);
+            Check.Name = "Check";
+            Check.Size = new Size(75, 23);
+            Check.TabIndex = 6;
+            Check.Text = "Check";
+            Check.UseVisualStyleBackColor = true;
+            Check.Click += Check_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label1.Location = new Point(624, 9);
+            label1.Location = new Point(12, 25);
             label1.Name = "label1";
-            label1.Size = new Size(80, 21);
-            label1.TabIndex = 1;
-            label1.Text = "Accounts";
+            label1.Size = new Size(231, 21);
+            label1.TabIndex = 7;
+            label1.Text = "Password Manager - Desktop";
             // 
             // AccountForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(684, 461);
             Controls.Add(label1);
+            Controls.Add(Check);
+            Controls.Add(Generate);
+            Controls.Add(Delete);
+            Controls.Add(Add);
             Controls.Add(listView1);
             Name = "AccountForm";
             Text = "Account Form";
@@ -66,6 +152,16 @@
         #endregion
 
         private ListView listView1;
+        private ColumnHeader ID;
+        private ColumnHeader Title;
+        private ColumnHeader Email;
+        private ColumnHeader Username;
+        private ColumnHeader Password;
+        private Button Add;
+        private Button Delete;
+        private Button Generate;
+        private ColumnHeader Website;
+        private Button Check;
         private Label label1;
     }
 }
