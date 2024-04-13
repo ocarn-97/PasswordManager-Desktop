@@ -29,13 +29,28 @@ namespace PasswordManager_Desktop
 
         private void Generate_Click(object sender, EventArgs e)
         {
-            string generatedPassword = PasswordUtils.GeneratePassword();
-            MessageBox.Show(generatedPassword);
+            try
+            {
+                string generatedPassword = PasswordUtils.GeneratePassword();
+                MessageBox.Show($"Generated Password: {generatedPassword}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Check_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                CheckForm checkForm = new();
+                checkForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

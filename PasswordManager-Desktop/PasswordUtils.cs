@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,8 @@ namespace PasswordManager_Desktop
     internal class PasswordUtils
     {
 
-        private readonly string filePath = "Files\\BadPasswordList.txt";
-        private HashSet<string>? badPasswords;
+        private readonly string? FilePath = ConfigurationManager.AppSettings["BadPasswordList"];
+        private HashSet<string>? BadPasswords;
 
         // GeneratePassword(): Generates a secure password.
         public static string GeneratePassword()
@@ -41,11 +42,11 @@ namespace PasswordManager_Desktop
         {
             if (IsTooShort(password))
             {
-                MessageBox.Show($"The password {password} is too short. Please use a password that is at least 12 characters in length.");
+                MessageBox.Show($"The password {password} is too short. It is recommended to use a password that is at least 12 characters in length.");
             }
             else if (IsBadPassword(password))
             {
-                MessageBox.Show($"The password {password} is too predictable. Please use a different password.");
+                MessageBox.Show($"The password {password} is too predictable. A more complex password is recommended.");
             }
 
             MessageBox.Show("This password follows best practices for security.");
@@ -65,14 +66,14 @@ namespace PasswordManager_Desktop
         // IsBadPassword(): Determines whether a password is commmon or weak by comparing it to those in BadPasswordList.txt.
         private bool IsBadPassword(string password)
         {
-            if (!File.Exists(filePath))
+            if (!File.Exists(FilePath))
             {
-                throw new FileNotFoundException($"Bad password list file not found at: {filePath}");
+                throw new FileNotFoundException($"Bad password list file not found at: {FilePath}");
             }
             else
             {
-                badPasswords ??= new HashSet<string>(File.ReadAllLines(filePath));
-                return badPasswords.Contains(password);
+                BadPasswords ??= new HashSet<string>(File.ReadAllLines(FilePath));
+                return BadPasswords.Contains(password);
             }
         }
     }

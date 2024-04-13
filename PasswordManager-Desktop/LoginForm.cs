@@ -49,7 +49,6 @@ namespace PasswordManager_Desktop
                     {
                         AccountForm accountForm = new();
                         accountForm.ShowDialog();
-                        Close();
                     }
                     else
                     {

@@ -5,14 +5,14 @@ namespace PasswordManager_Desktop
         public RegistrationForm()
         {
             InitializeComponent();
+
             try
             {
                 bool isMasterAccount = LoginManager.IsMasterAccount();
-                if (!isMasterAccount)
+                if (isMasterAccount)
                 {
                     LoginForm login = new();
                     login.ShowDialog();
-                    Close();
                 }
             }
             catch (Exception ex)

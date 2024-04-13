@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Linq;
@@ -10,12 +11,10 @@ namespace PasswordManager_Desktop
 {
     internal interface IDataManager
     {
-
-        private const string ConnectionString = "Data Source=Files\\PasswordManager-Desktop.db;Version=3;";
-
         // GetConnection(): Establishes a connection to the database.
         private static SQLiteConnection GetConnection()
         {
+            string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SQLiteConnection connection = new(ConnectionString);
             return connection;
         }
