@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
+﻿using System.Configuration;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PasswordManager_Desktop
 {
@@ -29,9 +25,9 @@ namespace PasswordManager_Desktop
                 bool addCharacter = rand.Next(2) == 0;
 
                 if (addCharacter)
-                    str.Append(Characters[rand.Next(Characters.Length)]);
+                { str.Append(Characters[rand.Next(Characters.Length)]); }
                 else
-                    str.Append(Symbols[rand.Next(Symbols.Length)]);
+                { str.Append(Symbols[rand.Next(Symbols.Length)]); }
             }
 
             return str.ToString();
@@ -63,8 +59,10 @@ namespace PasswordManager_Desktop
             {
                 return true;
             }
-
-            return false;
+            else
+            {
+                return false; 
+            }
         }
 
         // IsBadPassword(): Determines whether a password is commmon or weak by comparing it to those in BadPasswordList.txt.

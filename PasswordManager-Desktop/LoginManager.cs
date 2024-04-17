@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace PasswordManager_Desktop
+﻿namespace PasswordManager_Desktop
 {
     internal class LoginManager : IDataManager, IEmailManager
     {
