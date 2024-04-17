@@ -43,10 +43,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label1.Location = new Point(66, 34);
+            label1.Font = new Font("Segoe UI", 10F);
+            label1.Location = new Point(74, 34);
             label1.Name = "label1";
-            label1.Size = new Size(188, 19);
+            label1.Size = new Size(172, 19);
             label1.TabIndex = 1;
             label1.Text = "Enter a password to check.";
             // 
@@ -68,8 +68,11 @@
             Controls.Add(Check);
             Controls.Add(label1);
             Controls.Add(checkTextBox);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "CheckForm";
             Text = "Check Form";
+            Enter += Check_Click;
             ResumeLayout(false);
             PerformLayout();
         }

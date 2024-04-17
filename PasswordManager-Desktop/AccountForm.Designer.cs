@@ -143,6 +143,8 @@
             Controls.Add(Delete);
             Controls.Add(Add);
             Controls.Add(listView1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "AccountForm";
             Text = "Account Form";
             ResumeLayout(false);

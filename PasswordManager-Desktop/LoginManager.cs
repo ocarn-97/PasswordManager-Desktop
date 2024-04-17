@@ -1,4 +1,6 @@
-﻿namespace PasswordManager_Desktop
+﻿using System.Runtime.InteropServices;
+
+namespace PasswordManager_Desktop
 {
     internal class LoginManager : IDataManager, IEmailManager
     {
@@ -29,13 +31,25 @@
             string query = "SELECT * FROM MasterAccount WHERE Username = @Username AND Password = @Password";
 
             List<Dictionary<string, object>> results =
-            IDataManager.Fetch(query, new
+                IDataManager.Fetch(query, new
+                {
+                    loginManager.Username,
+                    loginManager.Password
+                });
+
+            if (results.Count > 0 || results != null)
             {
-                loginManager.Username,
-                loginManager.Password
-            });
-            if (results.Count > 0 || results != null) {return true;}
-            else { return false; }
+                Dictionary<string, object> firstRow = results[0];
+                object username = firstRow["username"];
+                object password = firstRow["password"];
+
+                if (username != null && password != null && username.ToString() == loginManager.Username && password.ToString() == loginManager.Password)
+                {
+                    return true;
+                }
+            }
+            
+            return false;
         }
 
         // IsMasterAccount(): Checks whether a master account exists in the MasterAccount table.

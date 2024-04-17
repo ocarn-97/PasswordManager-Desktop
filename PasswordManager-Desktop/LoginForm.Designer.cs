@@ -119,8 +119,11 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(usernameTextBox);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "LoginForm";
             Text = "Login Form";
+            Enter += Login_Click;
             ResumeLayout(false);
             PerformLayout();
         }

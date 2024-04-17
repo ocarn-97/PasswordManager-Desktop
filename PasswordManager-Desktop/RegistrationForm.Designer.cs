@@ -142,8 +142,11 @@
             Controls.Add(label1);
             Controls.Add(emailTextBox);
             Controls.Add(usernameTextBox);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "RegistrationForm";
             Text = "  Registration Form";
+            Enter += Register_Click;
             ResumeLayout(false);
             PerformLayout();
         }

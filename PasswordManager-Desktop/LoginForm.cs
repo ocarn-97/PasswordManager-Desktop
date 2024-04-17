@@ -12,6 +12,9 @@ namespace PasswordManager_Desktop
 {
     public partial class LoginForm : Form
     {
+
+        private int loginAttempts = 0;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -19,8 +22,6 @@ namespace PasswordManager_Desktop
 
         private void Login_Click(object sender, EventArgs e)
         {
-            int loginAttempts = 0;
-
             try
             {
                 if (string.IsNullOrEmpty(usernameTextBox.Text) || string.IsNullOrEmpty(passwordTextBox.Text))
@@ -30,29 +31,33 @@ namespace PasswordManager_Desktop
                 }
                 else
                 {
-                    loginAttempts++;
-
-                    if (loginAttempts > 3)
+                    if (loginAttempts < 3)
                     {
-                        MessageBox.Show("You have exceeded the maximum number of login attempts. Please reopen the application and try again.");
-                        return;
-                    }
+                        LoginManager credentials = new()
+                        {
+                            Username = usernameTextBox.Text,
+                            Password = passwordTextBox.Text,
+                        };
 
-                    LoginManager credentials = new()
-                    {
-                        Username = usernameTextBox.Text,
-                        Password = passwordTextBox.Text,
-                    };
+                        bool isValidCredentials = LoginManager.VerifyCredentials(credentials);
 
-                    bool isValidCredentials = LoginManager.VerifyCredentials(credentials);
-                    if (isValidCredentials)
-                    {
-                        AccountForm accountForm = new();
-                        accountForm.ShowDialog();
+                        if (isValidCredentials)
+                        {
+                            MessageBox.Show("Login successful");
+                            AccountForm accountForm = new();
+                            accountForm.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid username and password combination. Please try again.");
+                            loginAttempts++;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Invalid username and password combination. Please try again.");
+                        MessageBox.Show("You have exceeded the maximum number of login attempts. Please reopen the application and try again.");
+                        return;
                     }
                 }
             }

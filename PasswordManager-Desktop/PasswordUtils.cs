@@ -48,6 +48,10 @@ namespace PasswordManager_Desktop
             {
                 MessageBox.Show($"The password {password} is too predictable. A more complex password is recommended.");
             }
+            else if (IsTooShort(password) && IsBadPassword(password))
+            {
+                MessageBox.Show($"The password {password} is too short and predictable. A longer and more complex password is recommended.");
+            }
 
             MessageBox.Show("This password follows best practices for security.");
         }

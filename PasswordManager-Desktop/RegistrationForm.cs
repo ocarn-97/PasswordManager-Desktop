@@ -5,21 +5,6 @@ namespace PasswordManager_Desktop
         public RegistrationForm()
         {
             InitializeComponent();
-
-            try
-            {
-                bool isMasterAccount = LoginManager.IsMasterAccount();
-                if (isMasterAccount)
-                {
-                    LoginForm login = new();
-                    login.ShowDialog();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
         }
 
         private void Register_Click(object sender, EventArgs e)
@@ -40,6 +25,9 @@ namespace PasswordManager_Desktop
                     };
 
                     LoginManager.CreateMasterAccount(newMasterAccount);
+                    AccountForm accountForm = new();
+                    accountForm.Show();
+                    this.Close();
                 }
             }
             catch (Exception ex)

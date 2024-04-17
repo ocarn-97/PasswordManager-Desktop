@@ -8,10 +8,24 @@ namespace PasswordManager_Desktop
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new RegistrationForm());
+
+            try
+            {
+                bool isMasterAccount = LoginManager.IsMasterAccount();
+                if (isMasterAccount)
+                {
+                    Application.Run(new LoginForm());
+                }
+                else
+                {
+                    Application.Run(new RegistrationForm());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
