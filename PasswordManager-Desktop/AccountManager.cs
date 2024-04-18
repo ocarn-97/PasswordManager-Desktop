@@ -5,6 +5,7 @@
         public int ID { get; set; }
         public string? Title { get; set; }
         public string? Website { get; set; }
+        public string? Email { get; set; }
         public string? Username { get; set; }
         public string? Password { get; set; }
 
@@ -17,29 +18,24 @@
         // AddAccount(): Adds a new account to the Accounts table.
         public static void AddAccount(AccountManager accountManager)
         {
-            string query = "INSERT INTO Accounts (Title, Website, Username, Password) VALUES (@Title, @Website, @Username, @Password)";
+            string query = "INSERT INTO Accounts (Title, Website, Email, Username, Password) VALUES (@Title, @Website, @Email, @Username, @Password)";
 
             IDataManager.Save(query, new
             {
                 accountManager.Title,
                 accountManager.Website,
+                accountManager.Email,
                 accountManager.Username,
                 accountManager.Password,
             });
         }
 
         // DeleteAccount(): Deletes an existing account from the Accounts table.
-        public static void DeleteAccount(AccountManager accountManager)
+        public static void DeleteAccount(int ID)
         {
-            string query = "DELETE FROM Accounts (Title, Website, Username, Password) VALUES (@Title, @Website, @Username, @Password)";
+            string query = "DELETE FROM Accounts WHERE ID = @ID";
 
-            IDataManager.Save(query, new
-            {
-                accountManager.Title,
-                accountManager.Website,
-                accountManager.Username,
-                accountManager.Password,
-            });
+            IDataManager.Save(query, new {ID});
         }
 
         // UpdateAccount(): Updates an account in the Accounts table.
@@ -56,20 +52,13 @@
             });
         }
 
-        // FetchAccount(): Retrieves account details from the Accounts table.
-        public static void FetchAccount(AccountManager accountManager)
+        // FetchAccount(): Fetches accounts from the Accounts table.
+        public static List<Dictionary<string, object>> FetchAccount()
         {
-            string query = "INSERT INTO Accounts (Title, Website, Username, Password) VALUES (@Title, @Website, @Username, @Password)";
+            string query = "SELECT * FROM Accounts";
 
-            IDataManager.Fetch(query, new
-            {
-                accountManager.Title,
-                accountManager.Website,
-                accountManager.Username,
-                accountManager.Password,
-            });
+            List<Dictionary<string, object>> results = IDataManager.Fetch(query, null);
+            return results;
         }
-
-
     }
 }

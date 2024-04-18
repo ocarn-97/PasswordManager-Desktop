@@ -48,8 +48,10 @@ namespace PasswordManager_Desktop
             {
                 MessageBox.Show($"The password {password} is too short and predictable. A longer and more complex password is recommended.");
             }
-
-            MessageBox.Show("This password follows best practices for security.");
+            else
+            {
+                MessageBox.Show("This password follows best practices for security.");
+            }
         }
 
         // IsShort(): Detects whether a password is too short (i.e., less than 12 characters).

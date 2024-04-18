@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listView1 = new ListView();
+            listView = new ListView();
             ID = new ColumnHeader();
             Title = new ColumnHeader();
             Website = new ColumnHeader();
@@ -42,15 +42,15 @@
             label1 = new Label();
             SuspendLayout();
             // 
-            // listView1
+            // listView
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { ID, Title, Website, Email, Username, Password });
-            listView1.Location = new Point(12, 67);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(660, 382);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            listView.Columns.AddRange(new ColumnHeader[] { ID, Title, Website, Email, Username, Password });
+            listView.Location = new Point(12, 67);
+            listView.Name = "listView";
+            listView.Size = new Size(660, 382);
+            listView.TabIndex = 0;
+            listView.UseCompatibleStateImageBehavior = false;
+            listView.View = View.Details;
             // 
             // ID
             // 
@@ -142,7 +142,7 @@
             Controls.Add(Generate);
             Controls.Add(Delete);
             Controls.Add(Add);
-            Controls.Add(listView1);
+            Controls.Add(listView);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "AccountForm";
@@ -153,7 +153,7 @@
 
         #endregion
 
-        private ListView listView1;
+        private ListView listView;
         private ColumnHeader ID;
         private ColumnHeader Title;
         private ColumnHeader Email;

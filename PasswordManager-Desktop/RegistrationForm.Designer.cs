@@ -59,6 +59,7 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label1.Location = new Point(118, 89);
             label1.Name = "label1";
             label1.Size = new Size(36, 15);
@@ -70,9 +71,10 @@
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label2.Location = new Point(118, 134);
             label2.Name = "label2";
-            label2.Size = new Size(60, 15);
+            label2.Size = new Size(64, 15);
             label2.TabIndex = 3;
             label2.Text = "Username";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -81,9 +83,10 @@
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label3.Location = new Point(118, 177);
             label3.Name = "label3";
-            label3.Size = new Size(57, 15);
+            label3.Size = new Size(59, 15);
             label3.TabIndex = 4;
             label3.Text = "Password";
             label3.TextAlign = ContentAlignment.MiddleCenter;

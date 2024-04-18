@@ -34,7 +34,6 @@ namespace PasswordManager_Desktop
             {
                 MessageBox.Show(ex.Message);
             }
- 
         }
     }
 }

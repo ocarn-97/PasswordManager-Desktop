@@ -68,7 +68,7 @@ namespace PasswordManager_Desktop
                 using SQLiteDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Dictionary<string, object> row = [];
+                    Dictionary<string, object> row = new Dictionary<string, object>();
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
                         row.Add(reader.GetName(i), reader.GetValue(i));

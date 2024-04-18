@@ -26,27 +26,20 @@
         // VerifyCredentials(): Checks whether the inputted credentials correspond to those of the master account in the MasterAccount table.
         public static bool VerifyCredentials(LoginManager loginManager)
         {
-            string query = "SELECT * FROM MasterAccount WHERE Username = @Username AND Password = @Password";
+            string query = "SELECT * FROM MasterAccount WHERE Username = @Username";
+            List<Dictionary<string, object>> results = IDataManager.Fetch(query, new { loginManager.Username });
 
-            List<Dictionary<string, object>> results =
-                IDataManager.Fetch(query, new
-                {
-                    loginManager.Username,
-                    loginManager.Password
-                });
-
-            if (results.Count > 0 || results != null)
+            if (results.Count > 0)
             {
                 Dictionary<string, object> firstRow = results[0];
-                object username = firstRow["username"];
-                object password = firstRow["password"];
+                object storedPassword = firstRow["Password"];
 
-                if (username != null && password != null && username.ToString() == loginManager.Username && password.ToString() == loginManager.Password)
+                if (storedPassword != null && storedPassword.ToString() == loginManager.Password)
                 {
                     return true;
                 }
             }
-            
+
             return false;
         }
 

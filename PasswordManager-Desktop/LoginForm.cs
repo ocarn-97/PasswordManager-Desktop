@@ -56,8 +56,8 @@ namespace PasswordManager_Desktop
                     }
                     else
                     {
-                        MessageBox.Show("You have exceeded the maximum number of login attempts. Please reopen the application and try again.");
-                        return;
+                        MessageBox.Show("You have exceeded the maximum number of login attempts. The application will now close. Goodbye!");
+                        this.Close();
                     }
                 }
             }
