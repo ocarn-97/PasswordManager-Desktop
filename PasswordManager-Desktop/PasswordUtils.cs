@@ -7,7 +7,6 @@ namespace PasswordManager_Desktop
     {
 
         private readonly string? FilePath = ConfigurationManager.AppSettings["BadPasswordList"];
-        private HashSet<string>? BadPasswords;
 
         // GeneratePassword(): Generates a secure password.
         public static string GeneratePassword()
@@ -74,10 +73,24 @@ namespace PasswordManager_Desktop
             {
                 throw new FileNotFoundException($"Bad password list file not found at: {FilePath}");
             }
-            else
+
+            try
             {
-                BadPasswords ??= new HashSet<string>(File.ReadAllLines(FilePath));
-                return BadPasswords.Contains(password);
+                HashSet<string> badPasswords = [];
+                using (StreamReader reader = new(FilePath))
+                {
+                    string? line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        badPasswords.Add(line);
+                    }
+                }
+
+                return badPasswords.Contains(password);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error reading bad password list file: {ex.Message}");
             }
         }
     }

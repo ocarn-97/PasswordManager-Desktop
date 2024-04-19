@@ -40,14 +40,15 @@
             Generate = new Button();
             Check = new Button();
             label1 = new Label();
+            Update = new Button();
             SuspendLayout();
             // 
             // listView
             // 
             listView.Columns.AddRange(new ColumnHeader[] { ID, Title, Website, Email, Username, Password });
-            listView.Location = new Point(12, 67);
+            listView.Location = new Point(12, 70);
             listView.Name = "listView";
-            listView.Size = new Size(660, 382);
+            listView.Size = new Size(660, 379);
             listView.TabIndex = 0;
             listView.UseCompatibleStateImageBehavior = false;
             listView.View = View.Details;
@@ -84,7 +85,7 @@
             // 
             // Add
             // 
-            Add.Location = new Point(276, 26);
+            Add.Location = new Point(280, 12);
             Add.Name = "Add";
             Add.Size = new Size(75, 23);
             Add.TabIndex = 2;
@@ -94,7 +95,7 @@
             // 
             // Delete
             // 
-            Delete.Location = new Point(373, 26);
+            Delete.Location = new Point(370, 12);
             Delete.Name = "Delete";
             Delete.Size = new Size(75, 23);
             Delete.TabIndex = 3;
@@ -104,7 +105,7 @@
             // 
             // Generate
             // 
-            Generate.Location = new Point(470, 26);
+            Generate.Location = new Point(462, 12);
             Generate.Name = "Generate";
             Generate.Size = new Size(75, 23);
             Generate.TabIndex = 4;
@@ -114,7 +115,7 @@
             // 
             // Check
             // 
-            Check.Location = new Point(570, 26);
+            Check.Location = new Point(555, 12);
             Check.Name = "Check";
             Check.Size = new Size(75, 23);
             Check.TabIndex = 6;
@@ -126,17 +127,28 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label1.Location = new Point(12, 25);
+            label1.Location = new Point(23, 25);
             label1.Name = "label1";
             label1.Size = new Size(231, 21);
             label1.TabIndex = 7;
             label1.Text = "Password Manager - Desktop";
+            // 
+            // Update
+            // 
+            Update.Location = new Point(280, 41);
+            Update.Name = "Update";
+            Update.Size = new Size(75, 23);
+            Update.TabIndex = 8;
+            Update.Text = "Update";
+            Update.UseVisualStyleBackColor = true;
+            Update.Click += Update_Click;
             // 
             // AccountForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(684, 461);
+            Controls.Add(Update);
             Controls.Add(label1);
             Controls.Add(Check);
             Controls.Add(Generate);
@@ -165,5 +177,6 @@
         private ColumnHeader Website;
         private Button Check;
         private Label label1;
+        private Button Update;
     }
 }

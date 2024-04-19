@@ -41,19 +41,21 @@
         // UpdateAccount(): Updates an account in the Accounts table.
         public static void UpdateAccount(AccountManager accountManager)
         {
-            string query = "UPDATE Accounts SET (Title, Website, Username, Password) VALUES (@Title, @Website, @Username, @Password)";
+            string query = "UPDATE Accounts SET Title = @Title, Website = @Website, Email = @Email, Username = @Username, Password = @Password WHERE ID = @ID";
 
             IDataManager.Save(query, new
             {
+                accountManager.ID,
                 accountManager.Title,
                 accountManager.Website,
+                accountManager.Email,
                 accountManager.Username,
                 accountManager.Password,
             });
         }
 
         // FetchAccount(): Fetches accounts from the Accounts table.
-        public static List<Dictionary<string, object>> FetchAccount()
+        public static List<Dictionary<string, object>> FetchAccounts()
         {
             string query = "SELECT * FROM Accounts";
 

@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace PasswordManager_Desktop
+﻿namespace PasswordManager_Desktop
 {
     public partial class AccountForm : Form
     {
@@ -24,7 +13,7 @@ namespace PasswordManager_Desktop
             try
             {
                 listView.Items.Clear();
-                List<Dictionary<string, object>> items = AccountManager.FetchAccount() ?? [];
+                List<Dictionary<string, object>> items = AccountManager.FetchAccounts() ?? [];
 
                 if (items.Count > 0)
                 {
@@ -117,6 +106,31 @@ namespace PasswordManager_Desktop
             {
                 CheckForm checkForm = new();
                 checkForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listView.SelectedItems.Count > 0)
+                {
+                    UpdateForm updateForm = new(int.Parse(listView.SelectedItems[0].SubItems[0].Text));
+                    updateForm.PopulateUpdateForm(listView.SelectedItems[0]);
+
+                    if (updateForm.ShowDialog() == DialogResult.OK)
+                    {
+                        PopulateListView();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select an item to update.");
+                }
             }
             catch (Exception ex)
             {
