@@ -1,6 +1,6 @@
 ﻿namespace PasswordManager_Desktop
 {
-    internal class LoginManager : IDataManager, IEmailManager
+    internal class LoginManager : IDataManager
     {
         public int ID { get; set; }
         public string? Username { get; set; }
