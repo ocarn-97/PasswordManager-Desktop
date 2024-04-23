@@ -43,10 +43,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(74, 34);
+            label1.Font = new Font("Segoe UI", 9F);
+            label1.Location = new Point(86, 42);
             label1.Name = "label1";
-            label1.Size = new Size(172, 19);
+            label1.Size = new Size(147, 15);
             label1.TabIndex = 1;
             label1.Text = "Enter a password to check.";
             // 
