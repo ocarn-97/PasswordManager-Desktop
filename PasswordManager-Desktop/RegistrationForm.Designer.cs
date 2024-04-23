@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             usernameTextBox = new TextBox();
-            emailTextBox = new TextBox();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             passwordTextBox = new TextBox();
@@ -42,37 +40,17 @@
             // usernameTextBox
             // 
             usernameTextBox.Anchor = AnchorStyles.None;
-            usernameTextBox.Location = new Point(190, 131);
+            usernameTextBox.Location = new Point(190, 92);
             usernameTextBox.Name = "usernameTextBox";
             usernameTextBox.Size = new Size(157, 23);
             usernameTextBox.TabIndex = 0;
-            // 
-            // emailTextBox
-            // 
-            emailTextBox.Anchor = AnchorStyles.None;
-            emailTextBox.Location = new Point(190, 86);
-            emailTextBox.Name = "emailTextBox";
-            emailTextBox.Size = new Size(157, 23);
-            emailTextBox.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label1.Location = new Point(118, 89);
-            label1.Name = "label1";
-            label1.Size = new Size(36, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Email";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(118, 134);
+            label2.Location = new Point(118, 95);
             label2.Name = "label2";
             label2.Size = new Size(64, 15);
             label2.TabIndex = 3;
@@ -84,7 +62,7 @@
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(118, 177);
+            label3.Location = new Point(118, 138);
             label3.Name = "label3";
             label3.Size = new Size(59, 15);
             label3.TabIndex = 4;
@@ -94,7 +72,7 @@
             // passwordTextBox
             // 
             passwordTextBox.Anchor = AnchorStyles.None;
-            passwordTextBox.Location = new Point(190, 174);
+            passwordTextBox.Location = new Point(190, 135);
             passwordTextBox.Name = "passwordTextBox";
             passwordTextBox.PasswordChar = '●';
             passwordTextBox.Size = new Size(157, 23);
@@ -114,7 +92,7 @@
             // 
             // RegisterAccount
             // 
-            RegisterAccount.Location = new Point(226, 229);
+            RegisterAccount.Location = new Point(226, 190);
             RegisterAccount.Name = "RegisterAccount";
             RegisterAccount.Size = new Size(75, 23);
             RegisterAccount.TabIndex = 7;
@@ -142,8 +120,6 @@
             Controls.Add(passwordTextBox);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(emailTextBox);
             Controls.Add(usernameTextBox);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -157,8 +133,6 @@
         #endregion
 
         private TextBox usernameTextBox;
-        private TextBox emailTextBox;
-        private Label label1;
         private Label label2;
         private Label label3;
         private TextBox passwordTextBox;

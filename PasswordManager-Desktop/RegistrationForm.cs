@@ -11,7 +11,7 @@ namespace PasswordManager_Desktop
         {
             try
             {
-                if (string.IsNullOrEmpty(usernameTextBox.Text) || string.IsNullOrEmpty(passwordTextBox.Text) || string.IsNullOrEmpty(emailTextBox.Text))
+                if (string.IsNullOrEmpty(usernameTextBox.Text) || string.IsNullOrEmpty(passwordTextBox.Text))
                 {
                     MessageBox.Show("Please fill out all fields.");
                 }
@@ -20,8 +20,7 @@ namespace PasswordManager_Desktop
                     LoginManager newMasterAccount = new()
                     {
                         Username = usernameTextBox.Text,
-                        Password = passwordTextBox.Text,
-                        Email = emailTextBox.Text
+                        Password = passwordTextBox.Text
                     };
 
                     LoginManager.CreateMasterAccount(newMasterAccount);

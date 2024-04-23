@@ -5,21 +5,16 @@
         public int ID { get; set; }
         public string? Username { get; set; }
         public string? Password { get; set; }
-        public string? Email { get; set; }
-
-
-        // ResetPassword(): Resets user password.
 
         // CreateMasterAccount(): Creates master account by inserting a record into the MasterAccount table.
         public static void CreateMasterAccount(LoginManager loginManager)
         {
-            string query = "INSERT INTO MasterAccount (Username, Password, Email) VALUES (@Username, @Password, @Email)";
+            string query = "INSERT INTO MasterAccount (Username, Password) VALUES (@Username, @Password)";
 
             IDataManager.Save(query, new
             {
                 loginManager.Username,
-                loginManager.Password,
-                loginManager.Email
+                loginManager.Password
             });
         }
 
@@ -49,8 +44,19 @@
             string query = "SELECT * FROM MasterAccount";
 
             List<Dictionary<string, object>> results = IDataManager.Fetch(query, null);
-            if (results.Count > 0 || results != null) { return true; }
-            else { return false; }
+
+            if (results.Count > 0)
+            {
+                Dictionary<string, object> firstRow = results[0];
+                object storedPassword = firstRow["Username"];
+
+                if (storedPassword != null)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

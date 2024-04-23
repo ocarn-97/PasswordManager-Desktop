@@ -6,7 +6,7 @@ namespace PasswordManager_Desktop
     internal interface IDataManager
     {
         // GetConnection(): Establishes a connection to the database.
-        private static SQLiteConnection GetConnection()
+        public static SQLiteConnection GetConnection()
         {
             string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SQLiteConnection connection = new(ConnectionString);
@@ -14,7 +14,7 @@ namespace PasswordManager_Desktop
         }
 
         //CloseConnection(): Closes the database connection as a redundancy.
-        private static void CloseConnection(SQLiteConnection connection)
+        public static void CloseConnection(SQLiteConnection connection)
         {
             if (connection != null && connection.State != System.Data.ConnectionState.Closed)
             {

@@ -1,3 +1,5 @@
+using System.Configuration;
+
 namespace PasswordManager_Desktop
 {
     internal static class Program
@@ -8,17 +10,17 @@ namespace PasswordManager_Desktop
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize();
-
             try
             {
                 bool isMasterAccount = LoginManager.IsMasterAccount();
                 if (isMasterAccount)
                 {
+                    ApplicationConfiguration.Initialize();
                     Application.Run(new LoginForm());
                 }
                 else
                 {
+                    ApplicationConfiguration.Initialize();
                     Application.Run(new RegistrationForm());
                 }
             }

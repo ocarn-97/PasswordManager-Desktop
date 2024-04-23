@@ -73,24 +73,26 @@ namespace PasswordManager_Desktop
             {
                 throw new FileNotFoundException($"Bad password list file not found at: {FilePath}");
             }
-
-            try
+            else
             {
-                HashSet<string> badPasswords = [];
-                using (StreamReader reader = new(FilePath))
+                try
                 {
-                    string? line;
-                    while ((line = reader.ReadLine()) != null)
+                    HashSet<string> badPasswords = [];
+                    using (StreamReader reader = new(FilePath))
                     {
-                        badPasswords.Add(line);
+                        string? line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            badPasswords.Add(line);
+                        }
                     }
-                }
 
-                return badPasswords.Contains(password);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error reading bad password list file: {ex.Message}");
+                    return badPasswords.Contains(password);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Error with bad password list file: {ex.Message}");
+                }
             }
         }
     }
