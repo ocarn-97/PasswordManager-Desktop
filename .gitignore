@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /PasswordManager-Desktop/bin/publish/setup.exe
+/PasswordManager-Desktop/bin/publish/PasswordManager-Desktop.application
