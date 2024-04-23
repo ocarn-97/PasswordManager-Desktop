@@ -66,7 +66,7 @@
         {
             try
             {
-                if (listView.SelectedItems != null)
+                if (listView.SelectedItems.Count > 0)
                 {
                     foreach (ListViewItem selectedItem in listView.SelectedItems)
                     {
@@ -92,7 +92,7 @@
             try
             {
                 string generatedPassword = PasswordUtils.GeneratePassword();
-                MessageBox.Show($"Generated Password: {generatedPassword}");
+                MessageBox.Show(generatedPassword);
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@
                 }
                 else
                 {
-                    MessageBox.Show("Please select an item to update.");
+                    MessageBox.Show("Please select an account to update.");
                 }
             }
             catch (Exception ex)

@@ -15,7 +15,7 @@ namespace PasswordManager_Desktop
             const string Symbols = "!@#$%^&*";
 
             Random rand = new();
-            int length = rand.Next(12, 17); // Random length between 12 and 16 characters
+            int length = rand.Next(12, 17);
 
             StringBuilder str = new(length);
 
@@ -35,17 +35,17 @@ namespace PasswordManager_Desktop
         // CheckPassword(): Evaluates the strength of a password based upon its length and quality.
         public void CheckPassword(string password)
         {
-            if (IsTooShort(password))
+            if (IsTooShort(password) && IsBadPassword(password))
+            {
+                MessageBox.Show($"The password {password} is too short and predictable. A longer and more complex password is recommended.");
+            }
+            else if (IsTooShort(password))
             {
                 MessageBox.Show($"The password {password} is too short. It is recommended to use a password that is at least 12 characters in length.");
             }
             else if (IsBadPassword(password))
             {
                 MessageBox.Show($"The password {password} is too predictable. A more complex password is recommended.");
-            }
-            else if (IsTooShort(password) && IsBadPassword(password))
-            {
-                MessageBox.Show($"The password {password} is too short and predictable. A longer and more complex password is recommended.");
             }
             else
             {
@@ -62,38 +62,34 @@ namespace PasswordManager_Desktop
             }
             else
             {
-                return false; 
+                return false;
             }
         }
 
-        // IsBadPassword(): Determines whether a password is commmon or weak by comparing it to those in BadPasswordList.txt.
+        // IsBadPassword(): Determines whether a password is common or weak by comparing it to those in BadPasswordList.txt.
         private bool IsBadPassword(string password)
         {
+            if (FilePath == null)
+            {
+                throw new InvalidOperationException("FilePath is null.");
+            }
+
             if (!File.Exists(FilePath))
             {
-                throw new FileNotFoundException($"Bad password list file not found at: {FilePath}");
+                throw new FileNotFoundException($"File not found at: {FilePath}");
             }
-            else
-            {
-                try
-                {
-                    HashSet<string> badPasswords = [];
-                    using (StreamReader reader = new(FilePath))
-                    {
-                        string? line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            badPasswords.Add(line);
-                        }
-                    }
 
-                    return badPasswords.Contains(password);
-                }
-                catch (Exception ex)
+            HashSet<string> badPasswords = new();
+            using (StreamReader reader = new(FilePath))
+            {
+                string? line;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    throw new Exception($"Error with bad password list file: {ex.Message}");
+                    badPasswords.Add(line.Trim());
                 }
             }
+
+            return badPasswords.Contains(password.Trim());
         }
     }
 }

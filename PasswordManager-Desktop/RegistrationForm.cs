@@ -26,7 +26,7 @@ namespace PasswordManager_Desktop
                     LoginManager.CreateMasterAccount(newMasterAccount);
                     AccountForm accountForm = new();
                     accountForm.Show();
-                    this.Close();
+                    this.Hide();
                 }
             }
             catch (Exception ex)
