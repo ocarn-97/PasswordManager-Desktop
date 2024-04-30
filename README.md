@@ -1,6 +1,6 @@
 ****PasswordManager-Desktop****
 
-PasswordManager-Desktop is a simple web forms application written in C# that allows users to manage their passwords. It provides basic functionality such as adding, deleting, updating, and viewing account information as well as generating and checking passwords. This program is insecure and not meant for production-use. 
+PasswordManager-Desktop is a simple WinForms application written in C# that allows users to manage their passwords. It provides basic functionality such as adding, deleting, updating, and viewing account information as well as generating and checking passwords. This program is insecure and not meant for production-use. 
 
 
 ****Features****
